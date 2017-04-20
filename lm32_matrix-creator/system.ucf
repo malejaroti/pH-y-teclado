@@ -1,0 +1,33 @@
+# ==== Clock inputs (CLK) ====
+NET "clk" LOC = "P84";
+NET  led  LOC = "P39";
+NET  rst  LOC = "P105" | PULLUP;
+
+# ==== UART ====
+NET "uart_rxd" LOC = "P69";
+NET "uart_txd" LOC = "P70";
+
+# ==== EVERLOOP ====
+NET "led_control"  LOC = "P56";
+
+# ==== KEYBOARD ====
+
+# REG OUTPUT LEDs
+
+#NET "data[0]"			LOC = "T8"	| IOSTANDARD = "LVCMOS33";		
+#NET "data[1]"			LOC = "V9"	| IOSTANDARD = "LVCMOS33";		
+#NET "data[2]"			LOC = "R8"	| IOSTANDARD = "LVCMOS33";		
+#NET "data[3]"			LOC = "T6"	| IOSTANDARD = "LVCMOS33";		
+
+# REG INPUT
+
+NET "column[3]" 		LOC="P88" 	| IOSTANDARD = LVCMOS33;
+NET "column[2]" 		LOC="P85"	| IOSTANDARD = LVCMOS33;
+NET "column[1]" 		LOC="P83" 	| IOSTANDARD = LVCMOS33;
+NET "column[0]" 		LOC="P82" 	| IOSTANDARD = LVCMOS33;
+NET "row[3]" 			LOC="P81" 	| IOSTANDARD = LVCMOS33;
+NET "row[2]" 			LOC="P80" 	| IOSTANDARD = LVCMOS33;
+NET "row[1]" 			LOC="P79" 	| IOSTANDARD = LVCMOS33;
+NET "row[0]" 			LOC="P78" 	| IOSTANDARD = LVCMOS33;
+#NET "int" 			LOC = "P39" 	| IOSTANDARD = LVCMOS33 | DRIVE = 24; 
+

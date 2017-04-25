@@ -7,7 +7,7 @@ input [3:0] row;
 
 output wire [3:0] data;
 output wire int;
-output wire [3:0] column; 	
+output wire [3:0] column;
 
 wire clk1Khz;
 

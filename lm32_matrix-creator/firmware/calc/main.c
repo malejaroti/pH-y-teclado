@@ -18,8 +18,7 @@ char UartBuffer[UART_COMMANDS_BUFFER_SIZE];
 uint32_t UartBufferPtr = 0;
 
 void keypad_isr(void){ 
-	uart_putchar(keypad_read_data()+30);
-
+	uart_putchar(keypad_read_data()+48);
 }
 
 char* itoa(int i, char b[]){
@@ -45,7 +44,7 @@ char* itoa(int i, char b[]){
 /*************************************************************************//**
 Función que implementa una calculadora sencilla
 *****************************************************************************/
-int commandProcessing(const char *buffer){
+/*int commandProcessing(const char *buffer){
     
     char *s1, *s2;
     
@@ -97,10 +96,11 @@ int commandProcessing(const char *buffer){
     
     return atoi(buffer);
 }
+*/
 
 /*************************************************************************//**
 *****************************************************************************/
-void commandUart_TaskHandler(void){
+/*void commandUart_TaskHandler(void){
     
     //lee un byte del buffer de la UART
     char byte_u8 = uart_getchar();
@@ -132,6 +132,7 @@ void commandUart_TaskHandler(void){
     }
   
 }
+*/
 
 int main(void){
     
@@ -147,10 +148,10 @@ int main(void){
     mSleep(100);
     SK6812RGBW_rgbw(0x0000ff00);
     
-    while(1){
+/*    while(1){
         commandUart_TaskHandler();
     }
-    
+  */  
     return 0;
 }
 

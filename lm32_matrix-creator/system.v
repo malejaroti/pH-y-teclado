@@ -28,7 +28,8 @@ module system
 	output            uart_txd,
 	//keypad
 	input [3:0] row,
-	output [3:0] column
+	output [3:0] column,
+	output keypad0_intr
 
 );
 

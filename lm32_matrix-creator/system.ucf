@@ -1,6 +1,6 @@
 # ==== Clock inputs (CLK) ====
 NET "clk" LOC = "P84";
-NET  led  LOC = "P39";
+#NET  led  LOC = "P39";
 NET  rst  LOC = "P105" | PULLUP;
 
 # ==== UART ====
@@ -29,5 +29,4 @@ NET "row[3]" 			LOC="P81" 	| IOSTANDARD = LVCMOS33;
 NET "row[2]" 			LOC="P80" 	| IOSTANDARD = LVCMOS33;
 NET "row[1]" 			LOC="P79" 	| IOSTANDARD = LVCMOS33;
 NET "row[0]" 			LOC="P78" 	| IOSTANDARD = LVCMOS33;
-#NET "int" 			LOC = "P39" 	| IOSTANDARD = LVCMOS33 | DRIVE = 24; 
-
+NET "keypad0_intr" 		LOC="P39";

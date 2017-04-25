@@ -1,7 +1,7 @@
 Release 14.7 - par P.20131013 (lin64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Wed Apr 19 23:25:40 2017
+Fri Apr 21 12:36:24 2017
 
 
 # NOTE: This file is designed to be imported into a spreadsheet program
@@ -22,7 +22,7 @@ Pin Number|Signal Name|Pin Usage|Pin Name|Direction|IO Standard|IO Bank Number|D
 P1||IOBS|IO_L83N_VREF_3|UNUSED||3|||||||||
 P2||IOBM|IO_L83P_3|UNUSED||3|||||||||
 P3|||GND||||||||||||
-P4|||VCCO_3|||3|||||any******||||
+P4|||VCCO_3|||3|||||2.50||||
 P5||IOBS|IO_L52N_3|UNUSED||3|||||||||
 P6||IOBM|IO_L52P_3|UNUSED||3|||||||||
 P7||IOBS|IO_L51N_3|UNUSED||3|||||||||
@@ -36,7 +36,7 @@ P14||IOBS|IO_L44N_GCLK20_3|UNUSED||3|||||||||
 P15||IOBM|IO_L44P_GCLK21_3|UNUSED||3|||||||||
 P16||IOBS|IO_L43N_GCLK22_IRDY2_3|UNUSED||3|||||||||
 P17||IOBM|IO_L43P_GCLK23_3|UNUSED||3|||||||||
-P18|||VCCO_3|||3|||||any******||||
+P18|||VCCO_3|||3|||||2.50||||
 P19|||VCCINT||||||||1.2||||
 P20|||VCCAUX||||||||2.5||||
 P21||IOBS|IO_L42N_GCLK24_3|UNUSED||3|||||||||
@@ -49,15 +49,15 @@ P27||IOBM|IO_L37P_3|UNUSED||3|||||||||
 P28|||VCCINT||||||||1.2||||
 P29||IOBS|IO_L36N_3|UNUSED||3|||||||||
 P30||IOBM|IO_L36P_3|UNUSED||3|||||||||
-P31|||VCCO_3|||3|||||any******||||
-P32||IOBS|IO_L2N_3|UNUSED||3|||||||||
+P31|||VCCO_3|||3|||||2.50||||
+P32|led|IOB|IO_L2N_3|OUTPUT|LVCMOS25*|3|12|SLOW||||UNLOCATED|YES|NONE|
 P33||IOBM|IO_L2P_3|UNUSED||3|||||||||
 P34||IOBS|IO_L1N_VREF_3|UNUSED||3|||||||||
 P35||IOBM|IO_L1P_3|UNUSED||3|||||||||
 P36|||VCCAUX||||||||2.5||||
 P37|||PROGRAM_B_2||||||||||||
 P38||IOBS|IO_L65N_CSO_B_2|UNUSED||2|||||||||
-P39|led|IOB|IO_L65P_INIT_B_2|OUTPUT|LVCMOS25*|2|12|SLOW||||LOCATED|YES|NONE|
+P39|keypad0_intr|IOB|IO_L65P_INIT_B_2|OUTPUT|LVCMOS25*|2|12|SLOW||||LOCATED|YES|NONE|
 P40||IOBS|IO_L64N_D9_2|UNUSED||2|||||||||
 P41||IOBM|IO_L64P_D8_2|UNUSED||2|||||||||
 P42|||VCCO_2|||2|||||2.50||||

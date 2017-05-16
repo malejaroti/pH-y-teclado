@@ -1,4 +1,5 @@
 XILINXCADROOT   = /opt/cad/Xilinx/10.1/ISE
+IP				= raspberrypi.local
 
 VINCDIR=                                  \
 	-I../rtl/wb_conbus                 \

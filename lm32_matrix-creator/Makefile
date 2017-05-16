@@ -38,6 +38,7 @@ SRC=                                      \
 	../rtl/wb_keypad/keypad_1.v        \
 	../rtl/wb_keypad/divfreq.v         \
 	../rtl/wb_keypad/wb_keypad.v       \
+	../rtl/wb_keypad/debounce.v        \
 	../rtl/wb_everloop/wb_everloop.v     \
 	../rtl/wb_everloop/everloop.v     \
 	../rtl/wb_everloop/everloop_bram.v     \

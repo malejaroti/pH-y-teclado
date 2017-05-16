@@ -75,6 +75,4 @@ always@(*)
 	default   : keypad_data <= 4'bXXXX;
 	endcase
  end
-
 endmodule
-

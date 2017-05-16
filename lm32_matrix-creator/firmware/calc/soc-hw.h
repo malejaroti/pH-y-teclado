@@ -13,7 +13,7 @@
 
 #define UART_RXBUFSIZE 32
 
-
+#define debug 0
 /****************************************************************************
  * Types
  */
@@ -118,7 +118,7 @@ char spi_getchar(void);
 /***************************************************************************
  * SK6812RGBW0
  */
-
+/*
 typedef struct {
    volatile uint32_t nBits;
    volatile uint32_t rgbw;
@@ -133,7 +133,7 @@ void SK6812RGBW_nBits(uint32_t nBits);
 void SK6812RGBW_source(uint32_t source);
 void SK6812RGBW_ram(uint32_t color, uint32_t add);
 void SK6812RGBW_ram_w(void);
-
+*/
 /***************************************************************************
  * Keypad0
  */
@@ -145,6 +145,12 @@ char keypad_read_data(void);
 void keypad_init(void);
 void keypad_isr(void);
 
+/* inicia edicion*/
+char keypad_dec(void);
+void reset_and_start_timer(void);
+char put_char(char num, uint32_t count1);
+/* fin edicion */
+
 
 /***************************************************************************
  * Pointer to actual components
@@ -152,7 +158,7 @@ void keypad_isr(void);
 extern timerH_t *timer0;
 extern uart_t   *uart0; 
 extern gpio_t   *gpio0;
-extern SK6812RGBW_t   *SK6812RGBW0;
+//extern SK6812RGBW_t   *SK6812RGBW0;
 extern uint32_t *sram0; 
 
 #endif // SPIKEHW_H

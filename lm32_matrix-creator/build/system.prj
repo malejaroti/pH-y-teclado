@@ -21,6 +21,7 @@ verilog work ../rtl/wb_keypad/keypad.v
 verilog work ../rtl/wb_keypad/keypad_1.v
 verilog work ../rtl/wb_keypad/divfreq.v
 verilog work ../rtl/wb_keypad/wb_keypad.v
+verilog work ../rtl/wb_keypad/debounce.v
 verilog work ../rtl/wb_everloop/wb_everloop.v
 verilog work ../rtl/wb_everloop/everloop.v
 verilog work ../rtl/wb_everloop/everloop_bram.v

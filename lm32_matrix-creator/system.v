@@ -155,9 +155,11 @@ wire [31:0]  intr_n;
 wire         uart0_intr = 0;
 wire   [1:0] timer0_intr;
 wire         keypad0_intr;
+wire         keypad0_intr_up;
 // wire         gpio0_intr;
+debounce(.clk(clk), .PB(keypad0_intr), .PB_state(), .PB_up(keypad0_intr_up), .PB_down()); //antirrebote para generar solo una vez la tecla
 
-assign intr_n = { 27'hFFFFFFF, ~keypad0_intr, ~timer0_intr[1], /*~gpio0_intr*/1'b0, ~timer0_intr[0], ~uart0_intr };
+assign intr_n = { 27'hFFFFFFF, ~keypad0_intr_up, ~timer0_intr[1], /*~gpio0_intr*/1'b0, ~timer0_intr[0], ~uart0_intr };
 
 //---------------------------------------------------------------------------
 // Wishbone Interconnect

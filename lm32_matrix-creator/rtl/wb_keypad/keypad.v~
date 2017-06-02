@@ -7,9 +7,9 @@ input [3:0] row;
 
 output wire [3:0] data;
 output wire int;
-output wire [3:0] column; 	
+output wire [3:0] column;
 
-wire clk1Khz;
+output wire clk1Khz;
 
 divfreq div1 (.clkOut(clk1Khz), .clk(clk), .reset(1'b1));
  

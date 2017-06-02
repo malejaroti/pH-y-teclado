@@ -14,41 +14,47 @@ SIM_SRC=                                  \
 	../sim/unisims/BUFG.v              \
 	../sim/unisims/DCM.v
 
-SRC=                                      \
-	../system.v                              \
-	../rtl/lac/lac.v                   \
-	../rtl/lac/uart.v                  \
-	../rtl/lac/dp_ram.v                \
-	../rtl/lm32/lm32_cpu.v             \
-	../rtl/lm32/lm32_instruction_unit.v	\
-	../rtl/lm32/lm32_decoder.v         \
-	../rtl/lm32/lm32_simtrace.v        \
-	../rtl/lm32/lm32_load_store_unit.v \
-	../rtl/lm32/lm32_adder.v           \
-	../rtl/lm32/lm32_addsub.v          \
-	../rtl/lm32/lm32_logic_op.v        \
-	../rtl/lm32/lm32_shifter.v         \
-	../rtl/lm32/lm32_multiplier.v      \
-	../rtl/lm32/lm32_mc_arithmetic.v   \
-	../rtl/lm32/lm32_interrupt.v       \
-	../rtl/lm32/lm32_ram.v             \
-	../rtl/wb_bram/wb_bram.v           \
-	../rtl/wb_uart/wb_uart.v           \
-	../rtl/wb_keypad/keypad.v          \
-	../rtl/wb_keypad/keypad_1.v        \
-	../rtl/wb_keypad/divfreq.v         \
-	../rtl/wb_keypad/wb_keypad.v       \
-	../rtl/wb_everloop/wb_everloop.v     \
-	../rtl/wb_everloop/everloop.v     \
-	../rtl/wb_everloop/everloop_bram.v     \
-	../rtl/wb_timer/wb_timer.v         \
-	../rtl/wb_gpio/wb_gpio.v           \
-	../rtl/wb_spi/wb_spi.v             \
-	../rtl/wb_SK6812RGBW/wb_SK6812RGBW.v     \
-	../rtl/wb_SK6812RGBW/SK6812RGBW.v       \
-	../rtl/wb_SK6812RGBW/ram.v       \
-	../rtl/wb_conbus/conbus.v          \
-	../rtl/wb_conbus/conbus_arb.v      
+SRC=                                          \
+	../system.v                           \
+	../rtl/lac/lac.v                      \
+	../rtl/lac/uart.v                     \
+	../rtl/lac/dp_ram.v                   \
+	../rtl/lm32/lm32_cpu.v                \
+	../rtl/lm32/lm32_instruction_unit.v   \
+	../rtl/lm32/lm32_decoder.v            \
+	../rtl/lm32/lm32_simtrace.v           \
+	../rtl/lm32/lm32_load_store_unit.v    \
+	../rtl/lm32/lm32_adder.v              \
+	../rtl/lm32/lm32_addsub.v             \
+	../rtl/lm32/lm32_logic_op.v           \
+	../rtl/lm32/lm32_shifter.v            \
+	../rtl/lm32/lm32_multiplier.v         \
+	../rtl/lm32/lm32_mc_arithmetic.v      \
+	../rtl/lm32/lm32_interrupt.v          \
+	../rtl/lm32/lm32_ram.v                \
+	../rtl/wb_bram/wb_bram.v              \
+	../rtl/wb_uart/wb_uart.v              \
+	../rtl/wb_keypad/keypad.v             \
+	../rtl/wb_keypad/keypad_1.v           \
+	../rtl/wb_keypad/divfreq.v            \
+	../rtl/wb_keypad/wb_keypad.v          \
+	../rtl/wb_keypad/debounce.v           \
+	../rtl/wb_everloop/wb_everloop.v      \
+	../rtl/wb_everloop/everloop.v         \
+	../rtl/wb_everloop/everloop_bram.v    \
+	../rtl/wb_timer/wb_timer.v            \
+	../rtl/wb_gpio/wb_gpio.v              \
+	../rtl/wb_spi/wb_spi.v                \
+	../rtl/wb_SK6812RGBW/wb_SK6812RGBW.v  \
+	../rtl/wb_SK6812RGBW/SK6812RGBW.v     \
+	../rtl/wb_SK6812RGBW/ram.v            \
+	../rtl/wb_conbus/conbus.v             \
+	../rtl/wb_conbus/conbus_arb.v         \
+	../rtl/wb_camera/camera.v             \
+	../rtl/wb_camera/camera_1.v           \
+	../rtl/wb_camera/divfreq_cam.v        \
+	../rtl/wb_camera/wb_camera.v          \
+	../rtl/wb_camera/ram_cam.v            \
 
 #############################################################################
 # Synthesis constants

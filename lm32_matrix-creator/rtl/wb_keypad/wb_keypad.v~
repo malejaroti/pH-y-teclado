@@ -10,7 +10,7 @@
 
 module wb_keypad (
    input              clk,
-   input              reset,
+   input              reset, //reset
    // Wishbone interface
    input              wb_stb_i,
    input              wb_cyc_i,

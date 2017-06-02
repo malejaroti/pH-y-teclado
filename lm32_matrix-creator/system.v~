@@ -6,30 +6,43 @@
 
 module system
 #(
- 	parameter   bootram_file0     = "../firmware/calc/image0.ram",
- 	parameter   bootram_file1     = "../firmware/calc/image1.ram",
- 	parameter   bootram_file2     = "../firmware/calc/image2.ram",
- 	parameter   bootram_file3     = "../firmware/calc/image3.ram",
-//	parameter   bootram_file0     = "../firmware/SK6812RGBW/image0.ram",
-//	parameter   bootram_file1     = "../firmware/SK6812RGBW/image1.ram",
-//	parameter   bootram_file2     = "../firmware/SK6812RGBW/image2.ram",   //ubicacion archivos memoria ram
-//	parameter   bootram_file3     = "../firmware/SK6812RGBW/image3.ram",
+ //	parameter   bootram_file0     = "../firmware/keypad/image0.ram",
+ //	parameter   bootram_file1     = "../firmware/keypad/image1.ram",
+ //	parameter   bootram_file2     = "../firmware/keypad/image2.ram",
+ //	parameter   bootram_file3     = "../firmware/keypad/image3.ram",
+	parameter   bootram_file0     = "../firmware/camera/image0.ram",
+	parameter   bootram_file1     = "../firmware/camera/image1.ram",
+	parameter   bootram_file2     = "../firmware/camera/image2.ram",   //ubicacion archivos memoria ram
+	parameter   bootram_file3     = "../firmware/camera/image3.ram",
 	parameter   clk_freq         = 50000000,
-	parameter   uart_baud_rate   = 57600
+	parameter   uart_baud_rate   = 57600,
+	parameter divFactor = 50000,
+	parameter maxCount =  3,
+	parameter counterWidth = 2
 ) (
 	input             clk,
 	// Debug 
 	input             rst,
 	output            led,
 	/* SK6812RGBW */
-    output led_control,
+	output led_control,
 	// UART
 	input             uart_rxd, 
 	output            uart_txd,
 	//keypad
 	input [3:0] row,
 	output [3:0] column,
-	output keypad0_intr
+	output keypad0_intr,
+	//camera
+	input vsync,
+	input href,
+	input [7:0] data,
+	input pclk,
+	output we,
+//	output reset_cam,
+	output [18:0] address,
+	output clkOut,
+	output reg divOut
 
 );
 
@@ -41,6 +54,23 @@ wire         gnd   =  1'b0;
 wire   [3:0] gnd4  =  4'h0;
 wire  [31:0] gnd32 = 32'h00000000;
 
+reg [counterWidth-1: 0] Q;
+
+always @(posedge clk, negedge rst) 
+ begin
+	if(~rst) begin
+          Q <= 0;
+          divOut <= 1'b0;
+	end else if (Q == (maxCount -1)) begin
+     	  Q <= 0;
+      	  divOut <= ~divOut;
+     	end else begin
+	  Q <= Q + 1;
+     	end
+ end
+
+
+//assign reset_cam = rst;
  
 wire [31:0]  lm32i_adr,
              lm32d_adr,
@@ -51,7 +81,8 @@ wire [31:0]  lm32i_adr,
              ddr0_adr,
              bram0_adr,
              sram0_adr,
-             keypad0_adr;
+             keypad0_adr,
+             camera0_adr;
 
 
 wire [31:0]  lm32i_dat_r,
@@ -73,7 +104,9 @@ wire [31:0]  lm32i_dat_r,
              ddr0_dat_w,
              ddr0_dat_r,
              keypad0_dat_r,
-             keypad0_dat_w;
+             keypad0_dat_w,
+             camera0_dat_r,
+             camera0_dat_w;
 
 wire [3:0]   lm32i_sel,
              lm32d_sel,
@@ -84,7 +117,8 @@ wire [3:0]   lm32i_sel,
              bram0_sel,
              sram0_sel,
              ddr0_sel,
-             keypad0_sel;
+             keypad0_sel,
+             camera0_sel;
 
 wire         lm32i_we,
              lm32d_we,
@@ -95,7 +129,8 @@ wire         lm32i_we,
              bram0_we,
              sram0_we,
              ddr0_we,
-             keypad0_we;
+             keypad0_we,
+             camera0_we;
 
 
 wire         lm32i_cyc,
@@ -107,7 +142,8 @@ wire         lm32i_cyc,
              bram0_cyc,
              sram0_cyc,
              ddr0_cyc,
-             keypad0_cyc;
+             keypad0_cyc,
+             camera0_cyc;
 
 
 wire         lm32i_stb,
@@ -119,7 +155,8 @@ wire         lm32i_stb,
              bram0_stb,
              sram0_stb,
              ddr0_stb,
-             keypad0_stb;
+             keypad0_stb,
+             camera0_stb;
 
 wire         lm32i_ack,
              lm32d_ack,
@@ -130,7 +167,8 @@ wire         lm32i_ack,
              bram0_ack,
              sram0_ack,
              ddr0_ack,
-             keypad0_ack;
+             keypad0_ack,
+             camera0_ack;
 
 
 wire         lm32i_rty,
@@ -161,6 +199,8 @@ debounce(.clk(clk), .PB(keypad0_intr), .PB_state(), .PB_up(keypad0_intr_up), .PB
 
 assign intr_n = { 27'hFFFFFFF, ~keypad0_intr_up, ~timer0_intr[1], /*~gpio0_intr*/1'b0, ~timer0_intr[0], ~uart0_intr };
 
+
+
 //---------------------------------------------------------------------------
 // Wishbone Interconnect
 //---------------------------------------------------------------------------
@@ -169,7 +209,7 @@ conbus #(
 	.s0_addr(4'h0),// bram       0x00000000 
 	.s1_addr(4'h2),// uart0      0x20000000 
 	.s2_addr(4'h3),// timer      0x30000000 
-	.s3_addr(4'h4),// gpio       0x40000000 
+	.s3_addr(4'h4),// camera     0x40000000 
 	.s4_addr(4'h5),// keypad     0x50000000 
 	.s5_addr(4'h6) // SK6812RGBW 0x60000000 
 ) conbus0(
@@ -223,14 +263,14 @@ conbus #(
 	.s2_stb_o(  timer0_stb   ),
 	.s2_ack_i(  timer0_ack   ),
 	// Slave3
-	.s3_dat_i(  gpio0_dat_r ),
-	.s3_dat_o(  gpio0_dat_w ),
-	.s3_adr_o(  gpio0_adr   ),
-	.s3_sel_o(  gpio0_sel   ),
-	.s3_we_o(   gpio0_we    ),
-	.s3_cyc_o(  gpio0_cyc   ),
-	.s3_stb_o(  gpio0_stb   ),
-	.s3_ack_i(  gpio0_ack   ),
+	.s3_dat_i(  camera0_dat_r ),
+	.s3_dat_o(  camera0_dat_w ),
+	.s3_adr_o(  camera0_adr   ),
+	.s3_sel_o(  camera0_sel   ),
+	.s3_we_o(   camera0_we    ),
+	.s3_cyc_o(  camera0_cyc   ),
+	.s3_stb_o(  camera0_stb   ),
+	.s3_ack_i(  camera0_ack   ),
 	// Slave4
 	.s4_dat_i( keypad0_dat_r  ),
 	.s4_dat_o( keypad0_dat_w  ),
@@ -424,6 +464,31 @@ wb_keypad keypad (
    .row(row),
    .column(column),
    .interrupt(keypad0_intr)
+);
+
+//---------------------------------------------------------------------------
+// Camera
+//---------------------------------------------------------------------------
+
+wb_camera camera (
+   .clk(clk),
+   .reset(~rst),
+   // Wishbone interface
+   .wb_stb_i(camera0_stb),
+   .wb_cyc_i(camera0_cyc),
+   .wb_ack_o(camera0_ack),
+   .wb_we_i (camera0_we),
+   .wb_adr_i(camera0_adr),
+   .wb_sel_i(camera0_sel),
+   .wb_dat_i(camera0_dat_w),
+   .wb_dat_o(camera0_dat_r),
+   // Camera data
+  .vsync(vsync), 
+  .data(data),
+  .href(href),
+  .dataOut(dataOut),
+  .ready(ready),
+  .clkOut(clkOut)
 );
 
 

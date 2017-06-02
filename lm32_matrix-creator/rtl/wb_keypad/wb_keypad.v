@@ -46,7 +46,7 @@ keypad_1 keypad_1(
   .keypad_data(keypad_data)
 );
 
-  always @(posedge clk)
+always @(posedge clk)
   begin
     if (reset) begin
       ack         <= 0;

@@ -6,7 +6,7 @@ module ram_cam #(
     parameter ram_addwidth = 4
 ) (
     input ClkRd,
-    input we,
+    input ClkWr,
     input [ram_addwidth-1:0] add,
     input [3:0] dataIn,
     output reg [3:0] dataOut
@@ -20,7 +20,7 @@ module ram_cam #(
   
   always @ (posedge ClkRd)begin
      dataOut   <= BYTE[add];
-     if(we)begin
+     if(ClkWr)begin
        BYTE[add] <= dataIn;
     end
   end

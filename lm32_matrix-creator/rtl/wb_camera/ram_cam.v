@@ -2,7 +2,7 @@
 
 module ram_cam #(
     parameter mem_file_name = "none",
-//    parameter ram_width = 120,
+    parameter ram_width = 120,
     parameter ram_addwidth = 4
 ) (
     input ClkRd,

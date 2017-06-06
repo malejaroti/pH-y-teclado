@@ -30,7 +30,6 @@ module wb_camera (
    output ready,
 
    //ram data
-    output [3:0] dataOut,
     output clkOut
 );
 //---------------------------------------------------------------------------
@@ -42,31 +41,13 @@ assign wb_ack_o = wb_stb_i & wb_cyc_i & ack;
 wire wb_rd = wb_stb_i & wb_cyc_i & ~wb_we_i;
 wire wb_wr = wb_stb_i & wb_cyc_i &  wb_we_i;
 
+reg [3:0] dataOut;
+reg [3:0] add_rd;
+reg rd;
+camera(.clk50MHz(clk), .reset(reset), .vsync(vsync), .data(data), .href(href), .ready(ready), .pclk(pclk),.rd(rd), .add_rd(add_rd));
 
-camera_1 camera_1(
-  .vsync(vsync), 
-  .pclk(pclk),
-  .data(data), 
-  .href(href), 
-  .we(we),
-  .addr(addr),
-  .dataHI(dataHI),
-  .dataLO(dataLO)
-);
 
-ram_cam ram_cam(
-  .ClkRd(ClkRd),
-  .ClkWr(ClkWr),
-  .add(add),
-  .dataIn(dataIn),
-  .dataOut(dataOut)
-);
 
-divfreq_cam divfreq_cam(
-  .clkOut(clkOut),
-  .clk(clk),
-  .reset(reset)
-);
 
 
 always @(posedge clk)
@@ -83,11 +64,22 @@ begin
 
 			case (wb_adr_i[3:0])
 			'h0: wb_dat_o <= {31'h0,ready};
-			'h4: wb_dat_o <= {24'h0,data};
+			'h4: begin wb_dat_o <= {28'h0,dataOut}; rd <=0; end  
+			
+			//EN SOFTWARE:
+			//for (i=0;i<320*240;i++){			
+			// camara->add_rd =i;
+			//uart_putchar(camara->dataOut);}
+			
 			endcase
 		end else if (wb_wr & ~ack ) begin // write cycle
 			ack <= 1;
-
+			case (wb_adr_i[3:0])
+			'h4: begin
+			add_rd <= wb_dat_i;
+			rd<=1;								
+			end
+			endcase
 			end
 	end
 end

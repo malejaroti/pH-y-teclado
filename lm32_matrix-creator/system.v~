@@ -18,7 +18,7 @@ module system
 	parameter   uart_baud_rate   = 57600,
 	parameter divFactor = 50000,
 	parameter maxCount =  3,
-	parameter counterWidth = 2
+	parameter counterWidth = 3
 ) (
 	input             clk,
 	// Debug 

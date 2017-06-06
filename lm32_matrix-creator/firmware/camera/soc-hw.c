@@ -15,6 +15,28 @@ isr_ptr_t isr_table[32];
 
 
 uint32_t count;
+
+
+char* itoa(int i, char b[]){
+    char const digit[] = "0123456789";
+    char* p = b;
+    if(i<0){
+        *p++ = '-';
+        i *= -1;
+    }
+    int shifter = i;
+    do{ //Move to where representation ends
+        ++p;
+        shifter = shifter/10;
+    }while(shifter);
+    *p = '\0';
+    do{ //Move back, inserting digits as u go
+        *--p = digit[i%10];
+        i = i/10;
+    }while(i);
+    return b;
+}
+
 void isr_null(void)
 {
 }
@@ -146,7 +168,7 @@ void uart_putstr(char *str)
 
 uint32_t camera_data(void)
 {
-	return (camera0->data);
+	return (camera0->dataOut);
 }
 
 
@@ -155,7 +177,14 @@ uint32_t camera_finish(void)
 	return camera0->ready;
 }
 
-void camera_init(void)
-{
-	uart_putchar(camera_data()+48);
+int i;
+
+void camera_init(void){
+	//if (camera_finish()){	
+		for (i=0;i<320*240;i++){			
+			camera0->add_rd =i;
+			uart_putchar(camera0->dataOut);
+			uart_putstr("Hi \n");
+		}
+	//}
 }

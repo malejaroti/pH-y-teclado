@@ -1,5 +1,5 @@
 
-module camera(clk50MHz, reset, vsync, data, href, dataOut, ready, pclk);
+module camera(clk50MHz, reset, vsync, data, href, dataOut, ready, pclk, clkOut,rd, add_rd);
 
 parameter ram_addwidth = 4;
 input wire clk50MHz;
@@ -9,7 +9,8 @@ input wire [7:0]data;
 input wire href;
 output wire clkOut;
 input wire pclk;
-
+input rd;
+input [3:0] add_rd;
 
 //cam
 wire we;
@@ -32,7 +33,7 @@ camera_1 cm (.data(data), .vsync(vsync), .href(href), .pclk(pclk), .ready(ready)
 
 ram_cam #(.ram_addwidth(ram_addwidth)) 
 
-ram_cam (.ClkRd(clk1Khz), .ClkWr(we), .add(addr), .dataIn(dataHI[7:4]), .dataOut(dataOut));
+ram_cam (.ClkRd(clk1Khz), .ClkWr(we),.ClkRd(rd), .addw(addr), .addrd(add_rd), .dataIn(dataHI[7:4]), .dataOut(dataOut));
 
 endmodule
 

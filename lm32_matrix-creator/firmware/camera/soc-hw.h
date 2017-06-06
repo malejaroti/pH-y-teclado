@@ -14,6 +14,11 @@
 #define UART_RXBUFSIZE 32
 
 #define debug 0
+
+
+char* itoa(int i, char b[]);
+
+
 /****************************************************************************
  * Types
  */
@@ -110,7 +115,9 @@ char spi_getchar(void);
 
 typedef struct {
   volatile uint32_t ready;
-  volatile uint32_t data;
+  volatile uint32_t dataOut;
+  volatile uint32_t add_rd;
+  
 } camera_t;
 
 uint32_t camera_data(void);

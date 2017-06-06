@@ -486,7 +486,6 @@ wb_camera camera (
   .vsync(vsync), 
   .data(data),
   .href(href),
-  .dataOut(dataOut),
   .ready(ready),
   .clkOut(clkOut)
 );

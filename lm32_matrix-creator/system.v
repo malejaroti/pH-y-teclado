@@ -487,6 +487,7 @@ wb_camera camera (
   .data(data),
   .href(href),
   .ready(ready),
+  .pclk(pclk),
   .clkOut(clkOut)
 );
 

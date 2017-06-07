@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (lin64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-nelson-Inspiron-N5110::  Sat Jun 03 13:47:04 2017
+nelson-Inspiron-N5110::  Tue Jun 06 20:09:57 2017
 
 par -ol high -w system.ncd system-routed.ncd 
 
@@ -31,11 +31,11 @@ Slice Logic Utilization:
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                1
-  Number of Slice LUTs:                      1,732 out of   2,400   72%
-    Number used as logic:                    1,640 out of   2,400   68%
-      Number using O6 output only:           1,222
+  Number of Slice LUTs:                      1,749 out of   2,400   72%
+    Number used as logic:                    1,651 out of   2,400   68%
+      Number using O6 output only:           1,248
       Number using O5 output only:             145
-      Number using O5 and O6:                  273
+      Number using O5 and O6:                  258
       Number used as ROM:                        0
     Number used as Memory:                      65 out of   1,200    5%
       Number used as Dual Port RAM:             64
@@ -47,18 +47,18 @@ Slice Logic Utilization:
         Number using O6 output only:             1
         Number using O5 output only:             0
         Number using O5 and O6:                  0
-    Number used exclusively as route-thrus:     27
-      Number with same-slice register load:     20
+    Number used exclusively as route-thrus:     33
+      Number with same-slice register load:     26
       Number with same-slice carry load:         7
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   557 out of     600   92%
+  Number of occupied Slices:                   538 out of     600   89%
   Number of MUXCYs used:                       344 out of   1,200   28%
-  Number of LUT Flip Flop pairs used:        1,964
-    Number with an unused Flip Flop:           657 out of   1,964   33%
-    Number with an unused LUT:                 232 out of   1,964   11%
-    Number of fully used LUT-FF pairs:       1,075 out of   1,964   54%
+  Number of LUT Flip Flop pairs used:        1,954
+    Number with an unused Flip Flop:           641 out of   1,954   32%
+    Number with an unused LUT:                 205 out of   1,954   10%
+    Number of fully used LUT-FF pairs:       1,108 out of   1,954   56%
     Number of slice register sites lost
       to control set restrictions:               0 out of   4,800    0%
 
@@ -122,29 +122,29 @@ WARNING:Par:288 - The signal vsync_IBUF has no load.  PAR will not attempt to ro
 Starting Router
 
 
-Phase  1  : 11401 unrouted;      REAL time: 6 secs 
+Phase  1  : 11501 unrouted;      REAL time: 5 secs 
 
-Phase  2  : 10061 unrouted;      REAL time: 7 secs 
+Phase  2  : 10175 unrouted;      REAL time: 6 secs 
 
-Phase  3  : 5200 unrouted;      REAL time: 17 secs 
+Phase  3  : 4998 unrouted;      REAL time: 12 secs 
 
-Phase  4  : 5200 unrouted; (Par is working to improve performance)     REAL time: 18 secs 
+Phase  4  : 5000 unrouted; (Par is working to improve performance)     REAL time: 12 secs 
 
 Updating file: system-routed.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 31 secs 
+Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 20 secs 
 
-Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 31 secs 
+Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 20 secs 
 
-Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 31 secs 
+Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 20 secs 
 
-Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 31 secs 
+Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 20 secs 
 
-Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 31 secs 
+Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 20 secs 
 
-Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 33 secs 
-Total REAL time to Router completion: 33 secs 
-Total CPU time to Router completion: 34 secs 
+Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 21 secs 
+Total REAL time to Router completion: 21 secs 
+Total CPU time to Router completion: 22 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -164,8 +164,8 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net clk | SETUP       |         N/A|    14.182ns|     N/A|           0
-  _BUFGP                                    | HOLD        |     0.403ns|            |       0|           0
+  Autotimespec constraint for clock net clk | SETUP       |         N/A|    14.135ns|     N/A|           0
+  _BUFGP                                    | HOLD        |     0.397ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 
@@ -183,8 +183,8 @@ All signals are completely routed.
 
 WARNING:Par:283 - There are 11 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Total REAL time to PAR completion: 34 secs 
-Total CPU time to PAR completion: 35 secs 
+Total REAL time to PAR completion: 22 secs 
+Total CPU time to PAR completion: 23 secs 
 
 Peak Memory Usage:  646 MB
 

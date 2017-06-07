@@ -179,7 +179,6 @@ Parsing module <ram_cam>.
 *                            HDL Elaboration                            *
 =========================================================================
 WARNING:HDLCompiler:1016 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/system.v" Line 207: Port m0_cti_i is not connected to this instance
-WARNING:HDLCompiler:1016 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/system.v" Line 473: Port pclk is not connected to this instance
 
 Elaborating module <system>.
 WARNING:HDLCompiler:413 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/system.v" Line 68: Result of 4-bit expression is truncated to fit in 3-bit target.
@@ -286,7 +285,7 @@ WARNING:HDLCompiler:189 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/rtl
 WARNING:HDLCompiler:413 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/rtl/wb_camera/wb_camera.v" Line 79: Result of 32-bit expression is truncated to fit in 4-bit target.
 WARNING:HDLCompiler:634 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/rtl/wb_camera/wb_camera.v" Line 44: Net <dataOut[3]> does not have a driver.
 WARNING:HDLCompiler:1127 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/system.v" Line 489: Assignment to ready ignored, since the identifier is never used
-WARNING:HDLCompiler:413 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/system.v" Line 506: Result of 26-bit expression is truncated to fit in 25-bit target.
+WARNING:HDLCompiler:413 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/system.v" Line 507: Result of 26-bit expression is truncated to fit in 25-bit target.
 WARNING:HDLCompiler:634 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/system.v" Line 80: Net <gpio0_adr[31]> does not have a driver.
 WARNING:HDLCompiler:634 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/system.v" Line 99: Net <gpio0_dat_w[31]> does not have a driver.
 WARNING:HDLCompiler:634 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/system.v" Line 128: Net <gpio0_we> does not have a driver.
@@ -297,7 +296,6 @@ WARNING:HDLCompiler:634 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/sys
 WARNING:HDLCompiler:634 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/system.v" Line 177: Net <lm32i_err> does not have a driver.
 WARNING:HDLCompiler:634 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/system.v" Line 178: Net <lm32d_err> does not have a driver.
 WARNING:HDLCompiler:552 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/system.v" Line 215: Input port m0_cti_i[2] is not connected on this instance
-WARNING:HDLCompiler:552 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/system.v" Line 473: Input port pclk is not connected on this instance
 WARNING:Xst:2972 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/rtl/lm32/lm32_cpu.v" line 483. All outputs of instance <simtrace> of block <lm32_simtrace> are unconnected in block <lm32_cpu>. Underlying logic will be removed.
 
 =========================================================================
@@ -345,8 +343,6 @@ WARNING:Xst:2898 - Port 'm4_stb_i', unconnected in block instance 'conbus0', is 
 WARNING:Xst:2898 - Port 'm5_we_i', unconnected in block instance 'conbus0', is tied to GND.
 WARNING:Xst:2898 - Port 'm5_cyc_i', unconnected in block instance 'conbus0', is tied to GND.
 WARNING:Xst:2898 - Port 'm5_stb_i', unconnected in block instance 'conbus0', is tied to GND.
-WARNING:Xst:2898 - Port 'pclk', unconnected in block instance 'camera', is tied to GND.
-WARNING:Xst:647 - Input <pclk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 INFO:Xst:3210 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/system.v" line 198: Output port <PB_state> of the instance <_i000007> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/system.v" line 198: Output port <PB_down> of the instance <_i000007> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/system.v" line 215: Output port <m2_dat_o> of the instance <conbus0> is unconnected or connected to loadless signal.
@@ -385,7 +381,7 @@ WARNING:Xst:653 - Signal <lm32d_err> is used but never assigned. This sourceless
     Found 3-bit register for signal <Q>.
     Found 1-bit register for signal <divOut>.
     Found 3-bit adder for signal <Q[2]_GND_1_o_add_3_OUT> created at line 68.
-    Found 25-bit adder for signal <counter[24]_GND_1_o_add_7_OUT> created at line 506.
+    Found 25-bit adder for signal <counter[24]_GND_1_o_add_7_OUT> created at line 507.
     Summary:
 	inferred   2 Adder/Subtractor(s).
 	inferred  29 D-type flip-flop(s).
@@ -962,7 +958,7 @@ Unit <ram> synthesized.
 
 Synthesizing Unit <wb_keypad>.
     Related source file is "/home/nelson/git_pH-y-teclado/lm32_matrix-creator/rtl/wb_keypad/wb_keypad.v".
-WARNING:Xst:647 - Input <wb_adr_i<31:16>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <wb_adr_i<31:4>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <wb_sel_i> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <wb_dat_i> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 32-bit register for signal <wb_dat_o>.
@@ -1166,10 +1162,6 @@ WARNING:Xst:1290 - Hierarchical block <gpio0> is unconnected in block <system>.
    It will be removed from the design.
 INFO:Xst:2261 - The FF/Latch <wb_dat_o_4> in Unit <keypad> is equivalent to the following 27 FFs/Latches, which will be removed : <wb_dat_o_5> <wb_dat_o_6> <wb_dat_o_7> <wb_dat_o_8> <wb_dat_o_9> <wb_dat_o_10> <wb_dat_o_11> <wb_dat_o_12> <wb_dat_o_13> <wb_dat_o_14> <wb_dat_o_15> <wb_dat_o_16> <wb_dat_o_17> <wb_dat_o_18> <wb_dat_o_19> <wb_dat_o_20> <wb_dat_o_21> <wb_dat_o_22> <wb_dat_o_23> <wb_dat_o_24> <wb_dat_o_25> <wb_dat_o_26> <wb_dat_o_27> <wb_dat_o_28> <wb_dat_o_29> <wb_dat_o_30> <wb_dat_o_31> 
 INFO:Xst:2261 - The FF/Latch <i_cyc_o> in Unit <instruction_unit> is equivalent to the following FF/Latch, which will be removed : <i_stb_o> 
-WARNING:Xst:1710 - FF/Latch <wb_dat_o_12> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <wb_dat_o_13> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <wb_dat_o_14> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <wb_dat_o_15> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <wb_dat_o_16> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <wb_dat_o_17> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <wb_dat_o_18> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
@@ -1189,15 +1181,6 @@ WARNING:Xst:1710 - FF/Latch <wb_dat_o_31> (without init value) has a constant va
 WARNING:Xst:1710 - FF/Latch <bus_error_x> (without init value) has a constant value of 0 in block <lm0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <wb_dat_o_4> (without init value) has a constant value of 0 in block <keypad>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <ready> (without init value) has a constant value of 0 in block <cm>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_0> has a constant value of 0 in block <cm>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_1> has a constant value of 0 in block <cm>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_2> has a constant value of 0 in block <cm>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_3> has a constant value of 0 in block <cm>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_4> has a constant value of 0 in block <cm>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_5> has a constant value of 0 in block <cm>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_6> has a constant value of 0 in block <cm>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_7> has a constant value of 0 in block <cm>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_8> has a constant value of 0 in block <cm>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <wb_dat_o_1> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <wb_dat_o_2> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <wb_dat_o_3> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
@@ -1209,6 +1192,10 @@ WARNING:Xst:1710 - FF/Latch <wb_dat_o_8> (without init value) has a constant val
 WARNING:Xst:1710 - FF/Latch <wb_dat_o_9> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <wb_dat_o_10> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <wb_dat_o_11> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <wb_dat_o_12> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <wb_dat_o_13> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <wb_dat_o_14> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <wb_dat_o_15> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <i_adr_o_16> of sequential type is unconnected in block <instruction_unit>.
 WARNING:Xst:2677 - Node <i_adr_o_17> of sequential type is unconnected in block <instruction_unit>.
 WARNING:Xst:2677 - Node <i_adr_o_18> of sequential type is unconnected in block <instruction_unit>.
@@ -1234,8 +1221,6 @@ WARNING:Xst:2677 - Node <d_adr_o_25> of sequential type is unconnected in block 
 WARNING:Xst:2677 - Node <d_adr_o_26> of sequential type is unconnected in block <load_store_unit>.
 WARNING:Xst:2677 - Node <d_adr_o_27> of sequential type is unconnected in block <load_store_unit>.
 WARNING:Xst:1710 - FF/Latch <wb_dat_o_0> (without init value) has a constant value of 0 in block <camera>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1290 - Hierarchical block <_i000001> is unconnected in block <camera>.
-   It will be removed from the design.
 WARNING:Xst:2404 -  FFs/Latches <wb_dat_o<31:4>> (without init value) have a constant value of 0 in block <wb_keypad>.
 
 Synthesizing (advanced) Unit <SK6812RGBW>.
@@ -1532,33 +1517,7 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <wb_dat_o_4> (withou
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <wb_dat_o_3> (without init value) has a constant value of 0 in block <wb_camera>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <wb_dat_o_2> (without init value) has a constant value of 0 in block <wb_camera>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <wb_dat_o_1> (without init value) has a constant value of 0 in block <wb_camera>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <we> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_8> has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_7> has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_6> has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_5> has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_4> has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_3> has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_2> has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_1> has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <col_0> has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <ready> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dataLO_7> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dataLO_6> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dataLO_5> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dataLO_4> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dataLO_3> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dataLO_2> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dataLO_1> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dataLO_0> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dataHI_7> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dataHI_6> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dataHI_5> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dataHI_4> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dataHI_3> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dataHI_2> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dataHI_1> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dataHI_0> (without init value) has a constant value of 0 in block <camera_1>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <gpio_dir_0> (without init value) has a constant value of 0 in block <wb_gpio>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <gpio_dir_1> (without init value) has a constant value of 0 in block <wb_gpio>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <gpio_dir_2> (without init value) has a constant value of 0 in block <wb_gpio>. This FF/Latch will be trimmed during the optimization process.
@@ -1586,7 +1545,20 @@ WARNING:Xst:2677 - Node <_i000001/ram_cam/dataOut_2> of sequential type is uncon
 WARNING:Xst:2677 - Node <_i000001/ram_cam/dataOut_1> of sequential type is unconnected in block <wb_camera>.
 WARNING:Xst:2677 - Node <_i000001/ram_cam/dataOut_0> of sequential type is unconnected in block <wb_camera>.
 WARNING:Xst:2677 - Node <_i000001/div/clkOut> of sequential type is unconnected in block <wb_camera>.
-WARNING:Xst:1710 - FF/Latch <wb_dat_o_0> (without init value) has a constant value of 0 in block <wb_camera>. This FF/Latch will be trimmed during the optimization process.
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <camera/_i000001/cm/FSM_3> on signal <state[1:3]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ 000   | 000
+ 001   | 001
+ 010   | 010
+ 011   | 011
+ 100   | 100
+ 101   | 101
+ 110   | 110
+ 111   | 111
+-------------------
 Analyzing FSM <MFsm> for best encoding.
 Optimizing FSM <conbus0/FSM_0> on signal <state[1:3]> with gray encoding.
 ---------------------
@@ -1635,6 +1607,10 @@ Optimizing unit <system> ...
 Optimizing unit <wb_keypad> ...
 
 Optimizing unit <keypad_1> ...
+
+Optimizing unit <wb_camera> ...
+
+Optimizing unit <camera_1> ...
 
 Optimizing unit <debounce> ...
 
@@ -1726,7 +1702,54 @@ Optimizing unit <wb_gpio> ...
 Optimizing unit <wb_SK6812RGBW> ...
 
 Optimizing unit <SK6812RGBW> ...
-WARNING:Xst:1710 - FF/Latch <lm0/bus_error_x> (without init value) has a constant value of 0 in block <system>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <camera/wb_dat_o_0> (without init value) has a constant value of 0 in block <system>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <lm0/bus_error_x> (without init value) has a constant value of 0 in block <system>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_16> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_15> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_14> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_13> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_12> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_11> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_10> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_9> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_8> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_7> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_6> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_5> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_4> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_3> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_2> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_1> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/addr_0> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/state_FSM_FFd1> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/state_FSM_FFd2> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/state_FSM_FFd3> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/col_8> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/col_7> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/col_6> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/col_5> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/col_4> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/col_3> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/col_2> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/col_1> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/col_0> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/we> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/dataLO_7> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/dataLO_6> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/dataLO_5> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/dataLO_4> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/dataLO_3> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/dataLO_2> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/dataLO_1> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/dataLO_0> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/dataHI_7> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/dataHI_6> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/dataHI_5> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/dataHI_4> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/dataHI_3> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/dataHI_2> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/dataHI_1> of sequential type is unconnected in block <system>.
+WARNING:Xst:2677 - Node <camera/_i000001/cm/dataHI_0> of sequential type is unconnected in block <system>.
 WARNING:Xst:2677 - Node <lm0/instruction_unit/pc_w_31> of sequential type is unconnected in block <system>.
 WARNING:Xst:2677 - Node <lm0/instruction_unit/pc_w_30> of sequential type is unconnected in block <system>.
 WARNING:Xst:2677 - Node <lm0/instruction_unit/pc_w_29> of sequential type is unconnected in block <system>.
@@ -1958,15 +1981,15 @@ Top Level Output File Name         : system.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 2526
+# BELS                             : 2522
 #      GND                         : 1
 #      INV                         : 18
 #      LUT1                        : 152
-#      LUT2                        : 246
-#      LUT3                        : 297
-#      LUT4                        : 151
-#      LUT5                        : 310
-#      LUT6                        : 733
+#      LUT2                        : 215
+#      LUT3                        : 296
+#      LUT4                        : 150
+#      LUT5                        : 311
+#      LUT6                        : 761
 #      MUXCY                       : 314
 #      MUXF7                       : 11
 #      VCC                         : 1
@@ -2002,17 +2025,17 @@ Selected Device : 6slx4tqg144-2
 
 Slice Logic Utilization: 
  Number of Slice Registers:            1428  out of   4800    29%  
- Number of Slice LUTs:                 2036  out of   2400    84%  
-    Number used as Logic:              1907  out of   2400    79%  
+ Number of Slice LUTs:                 2032  out of   2400    84%  
+    Number used as Logic:              1903  out of   2400    79%  
     Number used as Memory:              129  out of   1200    10%  
        Number used as RAM:              128
        Number used as SRL:                1
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   2290
-   Number with an unused Flip Flop:     862  out of   2290    37%  
-   Number with an unused LUT:           254  out of   2290    11%  
-   Number of fully used LUT-FF pairs:  1174  out of   2290    51%  
+ Number of LUT Flip Flop pairs used:   2287
+   Number with an unused Flip Flop:     859  out of   2287    37%  
+   Number with an unused LUT:           255  out of   2287    11%  
+   Number of fully used LUT-FF pairs:  1173  out of   2287    51%  
    Number of unique control sets:        44
 
 IO Utilization: 
@@ -2070,7 +2093,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
   Clock period: 15.304ns (frequency: 65.342MHz)
-  Total number of paths / destination ports: 1343561 / 3694
+  Total number of paths / destination ports: 1343055 / 3694
 -------------------------------------------------------------------------
 Delay:               15.304ns (Levels of Logic = 3)
   Source:            lm0/multiplier/multiplier_3 (FF)
@@ -2147,15 +2170,15 @@ clk            |   15.304|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 19.00 secs
-Total CPU time to Xst completion: 18.67 secs
+Total REAL time to Xst completion: 20.00 secs
+Total CPU time to Xst completion: 18.85 secs
  
 --> 
 
 
-Total memory usage is 423292 kilobytes
+Total memory usage is 423400 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  439 (   0 filtered)
+Number of warnings :  445 (   0 filtered)
 Number of infos    :  125 (   0 filtered)
 

@@ -100,41 +100,6 @@ void uart_putstr(char *str);
 char uart_getchar(void);
 
 /***************************************************************************
- * SPI0
- */
-
-typedef struct {
-   volatile uint32_t rxtx;
-   volatile uint32_t nop1;
-   volatile uint32_t cs;
-   volatile uint32_t nop2;
-   volatile uint32_t divisor;
-} spi_t;
-
-void spi_init(void);
-void spi_putchar(char c);
-char spi_getchar(void);
-
-/***************************************************************************
- * SK6812RGBW0
- */
-/*
-typedef struct {
-   volatile uint32_t nBits;
-   volatile uint32_t rgbw;
-   volatile uint32_t source;
-   volatile uint32_t busy;
-} SK6812RGBW_t;
-
-void SK6812RGBW_init(void);
-uint32_t SK6812RGBW_busy(void);
-void SK6812RGBW_rgbw(uint32_t rgbw);
-void SK6812RGBW_nBits(uint32_t nBits);
-void SK6812RGBW_source(uint32_t source);
-void SK6812RGBW_ram(uint32_t color, uint32_t add);
-void SK6812RGBW_ram_w(void);
-*/
-/***************************************************************************
  * Keypad0
  */
 typedef struct {
@@ -145,11 +110,10 @@ char keypad_read_data(void);
 void keypad_init(void);
 void keypad_isr(void);
 
-/* inicia edicion*/
 char keypad_dec(void);
 void reset_and_start_timer(void);
 char put_char(char num, uint32_t count1);
-/* fin edicion */
+
 
 
 //Camera0
@@ -170,8 +134,6 @@ char camera_finish(void);
  */
 extern timerH_t *timer0;
 extern uart_t   *uart0; 
-//extern gpio_t   *gpio0;
-//extern SK6812RGBW_t   *SK6812RGBW0;
 extern uint32_t *sram0; 
 
 #endif // SPIKEHW_H

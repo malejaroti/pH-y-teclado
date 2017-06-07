@@ -7,7 +7,7 @@ NET "uart_rxd" LOC = "P69";
 NET "uart_txd" LOC = "P70";
 
 # ==== EVERLOOP ====
-NET "led_control"  LOC = "P56";
+#NET "led_control"  LOC = "P56";
 
 # ==== CAMERA ====
 

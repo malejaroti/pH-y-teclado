@@ -112,7 +112,7 @@ always @(posedge pclk) begin
 				row = row;
 			 end		
 		     e6: begin	if (href==0) begin
-					state	= e7;
+				state	= e7;
 				end
 			 	col = col;
 				row = row;

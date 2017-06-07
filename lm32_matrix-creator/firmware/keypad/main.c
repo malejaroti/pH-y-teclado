@@ -50,7 +50,7 @@ int main(void){
     irq_enable();
     uart_init();
     mSleep(100);
-//    SK6812RGBW_rgbw(0x0000ff00);
+
  
     return 0;
 }

@@ -57,8 +57,8 @@ always @(posedge clk)
 
      if (wb_rd & ~ack) begin           // read cycle
        ack <= 1;
-       case (wb_adr_i[3:0])
-       'h0:  wb_dat_o           <= {28'h0,keypad_data};
+       case (wb_adr_i[15:0])
+       'h0000:  wb_dat_o           <= {28'h0,keypad_data};
        endcase
      end else if (wb_wr & ~ack ) begin // write cycle
        ack <= 1;

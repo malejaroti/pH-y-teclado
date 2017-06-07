@@ -5,15 +5,15 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="info" file="LIT" num="243" delta="new" >Logical network <arg fmt="%s" index="1">address&lt;18&gt;</arg> has no load.
+<msg type="info" file="LIT" num="243" delta="new" >Logical network <arg fmt="%s" index="1">data&lt;7&gt;_IBUF</arg> has no load.
 </msg>
 
-<msg type="info" file="LIT" num="395" delta="new" >The above <arg fmt="%s" index="1">info</arg> message is repeated <arg fmt="%d" index="2">95</arg> more times for the following (max. 5 shown):
-<arg fmt="%s" index="3">address&lt;17&gt;,
-address&lt;16&gt;,
-address&lt;15&gt;,
-address&lt;14&gt;,
-address&lt;13&gt;</arg>
+<msg type="info" file="LIT" num="395" delta="new" >The above <arg fmt="%s" index="1">info</arg> message is repeated <arg fmt="%d" index="2">74</arg> more times for the following (max. 5 shown):
+<arg fmt="%s" index="3">data&lt;6&gt;_IBUF,
+data&lt;5&gt;_IBUF,
+data&lt;4&gt;_IBUF,
+data&lt;3&gt;_IBUF,
+data&lt;2&gt;_IBUF</arg>
 To see the details of these <arg fmt="%s" index="4">info</arg> messages, please use the -detail switch.
 </msg>
 
@@ -32,7 +32,7 @@ To see the details of these <arg fmt="%s" index="4">info</arg> messages, please 
 <msg type="info" file="Map" num="215" delta="new" >The Interim Design Summary has been generated in the MAP Report (.mrp).
 </msg>
 
-<msg type="info" file="Place" num="834" delta="new" >Only a subset of IOs are locked. Out of <arg fmt="%d" index="1">27</arg> IOs, <arg fmt="%d" index="2">17</arg> are locked and <arg fmt="%d" index="3">10</arg> are not locked. <arg fmt="%s" index="4">If you would like to print the names of these IOs, please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1.</arg> 
+<msg type="info" file="Place" num="834" delta="new" >Only a subset of IOs are locked. Out of <arg fmt="%d" index="1">26</arg> IOs, <arg fmt="%d" index="2">16</arg> are locked and <arg fmt="%d" index="3">10</arg> are not locked. <arg fmt="%s" index="4">If you would like to print the names of these IOs, please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1.</arg> 
 </msg>
 
 <msg type="info" file="Pack" num="1650" delta="new" >Map created a placed design.

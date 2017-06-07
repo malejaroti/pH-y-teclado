@@ -26,11 +26,7 @@ module wb_camera (
    input vsync,
    input href,
    input pclk,
-   input [7:0] data,
-   output ready,
-
-   //ram data
-    output clkOut
+   input [7:0] data  
 );
 //---------------------------------------------------------------------------
 // 
@@ -44,10 +40,9 @@ wire wb_wr = wb_stb_i & wb_cyc_i &  wb_we_i;
 reg [3:0] dataOut;
 reg [3:0] add_rd;
 reg rd;
-camera(.clk50MHz(clk), .reset(reset), .vsync(vsync), .data(data), .href(href), .ready(ready), .pclk(pclk),.rd(rd), .add_rd(add_rd));
+reg ready;
 
-
-
+camera( .vsync(vsync), .data(data), .href(href), .pclk(pclk),.rd(rd), .add_rd(add_rd));
 
 
 always @(posedge clk)
@@ -66,11 +61,7 @@ begin
 			'h0: wb_dat_o <= {31'h0,ready};
 			'h4: begin wb_dat_o <= {28'h0,dataOut}; rd <=0; end  
 			
-			//EN SOFTWARE:
-			//for (i=0;i<320*240;i++){			
-			// camara->add_rd =i;
-			//uart_putchar(camara->dataOut);}
-			
+						
 			endcase
 		end else if (wb_wr & ~ack ) begin // write cycle
 			ack <= 1;
@@ -83,7 +74,6 @@ begin
 			end
 	end
 end
-
 
 endmodule
 

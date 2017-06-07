@@ -15,10 +15,7 @@
 
 #define debug 0
 
-
 char* itoa(int i, char b[]);
-
-
 /****************************************************************************
  * Types
  */
@@ -92,23 +89,6 @@ void uart_putchar(char c);
 void uart_putstr(char *str);
 char uart_getchar(void);
 
-/***************************************************************************
- * SPI0
- */
-
-typedef struct {
-   volatile uint32_t rxtx;
-   volatile uint32_t nop1;
-   volatile uint32_t cs;
-   volatile uint32_t nop2;
-   volatile uint32_t divisor;
-} spi_t;
-
-void spi_init(void);
-void spi_putchar(char c);
-char spi_getchar(void);
-
-
 
 
 //Camera0
@@ -117,7 +97,6 @@ typedef struct {
   volatile uint32_t ready;
   volatile uint32_t dataOut;
   volatile uint32_t add_rd;
-  
 } camera_t;
 
 uint32_t camera_data(void);
@@ -132,8 +111,6 @@ void camera_init(void);
  */
 extern timerH_t *timer0;
 extern uart_t   *uart0; 
-//extern gpio_t   *gpio0;
-//extern SK6812RGBW_t   *SK6812RGBW0;
 extern uint32_t *sram0; 
 
 #endif // SPIKEHW_H

@@ -1,7 +1,7 @@
-INFILE=/home/nelson/git_pH-y-teclado/lm32_matrix-creator/build/system-routed.ncd
-OUTFILE=/home/nelson/git_pH-y-teclado/lm32_matrix-creator/build/system.bit
+INFILE=/home/nelson/Camera_data/Proyecto_Cam/Proyecto_Cam/pH-y-teclado-master/lm32_matrix-creator/build/system-routed.ncd
+OUTFILE=/home/nelson/Camera_data/Proyecto_Cam/Proyecto_Cam/pH-y-teclado-master/lm32_matrix-creator/build/system.bit
 FAMILY=Spartan6
 PART=xc6slx4-2tqg144
-WORKINGDIR=/home/nelson/git_pH-y-teclado/lm32_matrix-creator/build
+WORKINGDIR=/home/nelson/Camera_data/Proyecto_Cam/Proyecto_Cam/pH-y-teclado-master/lm32_matrix-creator/build
 LICENSE=WebPack
 USER_INFO=211165774_0_0_578

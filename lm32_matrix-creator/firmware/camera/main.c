@@ -17,6 +17,8 @@
 char UartBuffer[UART_COMMANDS_BUFFER_SIZE];
 uint32_t UartBufferPtr = 0;
 
+
+
 int main(void){
     
     // Init Commands
@@ -29,13 +31,8 @@ int main(void){
     uart_init();
     mSleep(100);
     //char b[50];
-//    SK6812RGBW_rgbw(0x0000ff00);
     while (1){
 	camera_init();
-	//uint32_t nelson=camera_data();
-	//uart_putstr(itoa(nelson, b));
-	//mSleep(10000);
-	
     } 
     return 0;
 }

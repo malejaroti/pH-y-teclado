@@ -5,7 +5,7 @@ uart_t       *uart0       = (uart_t *)       0x20000000;
 timerH_t     *timer0      = (timerH_t *)     0x30000000;
 //camera_t     *camera0     = (camera_t *)     0x40000000;
 keypad_t     *keypad0     = (keypad_t *)     0x50000000;
-//SK6812RGBW_t *SK6812RGBW0 = (SK6812RGBW_t *) 0x60000000;
+
 
 isr_ptr_t isr_table[32];
 

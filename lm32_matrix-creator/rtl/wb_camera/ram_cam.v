@@ -14,13 +14,14 @@ module ram_cam #(
 );
 
   reg [119:0] BYTE[3:0];
+ 
   
   initial
      if (mem_file_name != "none")
           $readmemh (mem_file_name, BYTE);
   
-  always @ (posedge ClkRd)begin
-     dataOut   <= BYTE[addw];
+ always @ (posedge ClkRd)begin
+     dataOut <= BYTE[addrd];
      if(ClkWr)begin
        BYTE[addw] <= dataIn;
 	end

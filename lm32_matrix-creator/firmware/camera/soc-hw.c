@@ -5,7 +5,7 @@ uart_t       *uart0       = (uart_t *)       0x20000000;
 timerH_t     *timer0      = (timerH_t *)     0x30000000;
 camera_t     *camera0     = (camera_t *)     0x40000000;
 //keypad_t     *keypad0     = (keypad_t *)     0x50000000;
-//SK6812RGBW_t *SK6812RGBW0 = (SK6812RGBW_t *) 0x60000000;
+
 
 isr_ptr_t isr_table[32];
 
@@ -15,7 +15,6 @@ isr_ptr_t isr_table[32];
 
 
 uint32_t count;
-
 
 char* itoa(int i, char b[]){
     char const digit[] = "0123456789";
@@ -178,13 +177,12 @@ uint32_t camera_finish(void)
 }
 
 int i;
-
+char b[50];
 void camera_init(void){
 	//if (camera_finish()){	
 		for (i=0;i<320*240;i++){			
 			camera0->add_rd =i;
 			uart_putchar(camera0->dataOut);
-			uart_putstr("Hi \n");
-		}
+			}
 	//}
 }

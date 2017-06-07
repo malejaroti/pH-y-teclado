@@ -24,8 +24,6 @@ module system
 	// Debug 
 	input             rst,
 	output            led,
-	/* SK6812RGBW */
-	output led_control,
 	// UART
 	input             uart_rxd, 
 	output            uart_txd,
@@ -38,10 +36,7 @@ module system
 	input href,
 	input [7:0] data,
 	input pclk,
-	output we,
-//	output reset_cam,
-	output [18:0] address,
-	output clkOut,
+  //	output reset_cam,
 	output reg divOut
 
 );
@@ -75,9 +70,7 @@ always @(posedge clk, negedge rst)
 wire [31:0]  lm32i_adr,
              lm32d_adr,
              uart0_adr,
-             SK6812RGBW0_adr,
              timer0_adr,
-             gpio0_adr,
              ddr0_adr,
              bram0_adr,
              sram0_adr,
@@ -91,12 +84,8 @@ wire [31:0]  lm32i_dat_r,
              lm32d_dat_w,
              uart0_dat_r,
              uart0_dat_w,
-             SK6812RGBW0_dat_r,
-             SK6812RGBW0_dat_w,
              timer0_dat_r,
-             timer0_dat_w,
-             gpio0_dat_r,
-             gpio0_dat_w,
+             timer0_dat_w,            
              bram0_dat_r,
              bram0_dat_w,
              sram0_dat_w,
@@ -111,9 +100,7 @@ wire [31:0]  lm32i_dat_r,
 wire [3:0]   lm32i_sel,
              lm32d_sel,
              uart0_sel,
-             SK6812RGBW0_sel,
-             timer0_sel,
-             gpio0_sel,
+             timer0_sel,             
              bram0_sel,
              sram0_sel,
              ddr0_sel,
@@ -123,9 +110,7 @@ wire [3:0]   lm32i_sel,
 wire         lm32i_we,
              lm32d_we,
              uart0_we,
-             SK6812RGBW0_we,
              timer0_we,
-             gpio0_we,
              bram0_we,
              sram0_we,
              ddr0_we,
@@ -135,10 +120,8 @@ wire         lm32i_we,
 
 wire         lm32i_cyc,
              lm32d_cyc,
-             uart0_cyc,
-             SK6812RGBW0_cyc,
-             timer0_cyc,
-             gpio0_cyc,
+             uart0_cyc,           
+             timer0_cyc,             
              bram0_cyc,
              sram0_cyc,
              ddr0_cyc,
@@ -148,10 +131,8 @@ wire         lm32i_cyc,
 
 wire         lm32i_stb,
              lm32d_stb,
-             uart0_stb,
-             SK6812RGBW0_stb,
-             timer0_stb,
-             gpio0_stb,
+             uart0_stb,             
+             timer0_stb,            
              bram0_stb,
              sram0_stb,
              ddr0_stb,
@@ -161,9 +142,7 @@ wire         lm32i_stb,
 wire         lm32i_ack,
              lm32d_ack,
              uart0_ack,
-             SK6812RGBW0_ack,
-             timer0_ack,
-             gpio0_ack,
+             timer0_ack,             
              bram0_ack,
              sram0_ack,
              ddr0_ack,
@@ -194,10 +173,10 @@ wire         uart0_intr = 0;
 wire   [1:0] timer0_intr;
 wire         keypad0_intr;
 wire         keypad0_intr_up;
-// wire         gpio0_intr;
+
 debounce(.clk(clk), .PB(keypad0_intr), .PB_state(), .PB_up(keypad0_intr_up), .PB_down()); //antirrebote para generar solo una vez la tecla
 
-assign intr_n = { 27'hFFFFFFF, ~keypad0_intr_up, ~timer0_intr[1], /*~gpio0_intr*/1'b0, ~timer0_intr[0], ~uart0_intr };
+assign intr_n = { 27'hFFFFFFF, ~keypad0_intr_up, ~timer0_intr[1], 1'b0, ~timer0_intr[0], ~uart0_intr };
 
 
 
@@ -210,8 +189,8 @@ conbus #(
 	.s1_addr(4'h2),// uart0      0x20000000 
 	.s2_addr(4'h3),// timer      0x30000000 
 	.s3_addr(4'h4),// camera     0x40000000 
-	.s4_addr(4'h5),// keypad     0x50000000 
-	.s5_addr(4'h6) // SK6812RGBW 0x60000000 
+	.s4_addr(4'h5)// keypad     0x50000000 
+
 ) conbus0(
 	.sys_clk( clk ),
 	.sys_rst( ~rst ),
@@ -279,16 +258,7 @@ conbus #(
 	.s4_we_o(  keypad0_we     ),
 	.s4_cyc_o( keypad0_cyc    ),
 	.s4_stb_o( keypad0_stb    ),
-	.s4_ack_i( keypad0_ack    ),
-	// Slave5
-	.s5_dat_i(  SK6812RGBW0_dat_r ),
-	.s5_dat_o(  SK6812RGBW0_dat_w ),
-	.s5_adr_o(  SK6812RGBW0_adr   ),
-	.s5_sel_o(  SK6812RGBW0_sel   ),
-	.s5_we_o(   SK6812RGBW0_we    ),
-	.s5_cyc_o(  SK6812RGBW0_cyc   ),
-	.s5_stb_o(  SK6812RGBW0_stb   ),
-	.s5_ack_i(  SK6812RGBW0_ack   )
+	.s4_ack_i( keypad0_ack    )
 	
 );
 
@@ -401,47 +371,6 @@ wb_timer #(
 	.intr(     timer0_intr  )
 );
 
-//---------------------------------------------------------------------------
-// General Purpose IO
-//---------------------------------------------------------------------------
-
-wire [7:0] gpio0_io;
-wire        gpio0_irq;
-
-wb_gpio gpio0 (
-	.clk(      clk          ),
-	.rst(    ~rst          ),
-	//
-	.wb_adr_i( gpio0_adr    ),
-	.wb_dat_i( gpio0_dat_w  ),
-	.wb_dat_o( gpio0_dat_r  ),
-	.wb_stb_i( gpio0_stb    ),
-	.wb_cyc_i( gpio0_cyc    ),
-	.wb_we_i(  gpio0_we     ),
-	.wb_ack_o( gpio0_ack    ), 
-	// GPIO
-	.gpio_io(gpio0_io)
-);
-
-//---------------------------------------------------------------------------
-// SK6812RGBW
-//---------------------------------------------------------------------------
-
-wb_SK6812RGBW SK6812RGBW0 (
-   .clk(clk),
-   .reset(~rst),
-   // Wishbone interface
-   .wb_stb_i(SK6812RGBW0_stb),
-   .wb_cyc_i(SK6812RGBW0_cyc),
-   .wb_ack_o(SK6812RGBW0_ack),
-   .wb_we_i(SK6812RGBW0_we),
-   .wb_adr_i(SK6812RGBW0_adr),
-   .wb_sel_i(SK6812RGBW0_sel),
-   .wb_dat_i(SK6812RGBW0_dat_w),
-   .wb_dat_o(SK6812RGBW0_dat_r),
-   // SK6812RGBW Output
-   .led_control(led_control)
-);
 
 
 //---------------------------------------------------------------------------
@@ -486,10 +415,8 @@ wb_camera camera (
   .vsync(vsync), 
   .data(data),
   .href(href),
-  .ready(ready),
-  .pclk(pclk),
-  .clkOut(clkOut)
-);
+  .pclk(pclk)
+  );
 
 
 //----------------------------------------------------------------------------

@@ -6,15 +6,15 @@ File Name: camera.v
 */
 
 module camera_1 #(
-	parameter 	h_frame = 240,
-	parameter	v_frame = 320,
+	parameter 	h_frame = 1536/2, // 240 en ov7670
+	parameter	v_frame = 2048/2, //320 en ov7670
 	parameter	e0 =3'b000,
 	parameter	e1 =3'b001,
 	parameter	e2 =3'b010,
 	parameter	e3 =3'b011,
 	parameter	e4 =3'b100,
-	parameter	e5 =3'b101,
-	parameter	e6 =3'b110,
+	parameter	e5_captura =3'b101,
+	parameter	e6_endrow =3'b110,
 	parameter	e7 =3'b111
 ) (
 	input vsync,
@@ -49,9 +49,12 @@ reg [4:0] blue;
 
 
 always @(negedge pclk) begin
-	if (state==e5 || state==e6) begin
+	if (state==e5_captura || state==e6_endrow) 
+	begin
 		we=1'b1;
-	end else begin
+	end 
+	else 
+	begin
 		we=0;
 	end
 end
@@ -88,8 +91,9 @@ always @(posedge pclk) begin
                          col = col;
                          row = row;
 			 end			
-		     e3: begin	dataHI = data;
-				state = e4;
+		     e3: begin	
+			 dataHI = data;
+			 state = e4;
                          col = col;
                          row = row;
 
@@ -97,21 +101,21 @@ always @(posedge pclk) begin
 		     e4: begin	dataLO = data;
 				if (col==h_frame-1) begin
 					col	=0;
-					state	=e6;
+					state	=e6_endrow;
 				end else begin
-					state	=e5;
+					state	=e5_captura;
 				end
                          col = col;
                          row = row;
 			 end
-		     e5: begin	dataHI = data;	
+		     e5_captura: begin	dataHI = data;	
 				col	=col+1;
 				addr	=addr+1;
 				state	=e4;
 				col = col;
 				row = row;
 			 end		
-		     e6: begin	if (href==0) begin
+		e6_endrow: begin	if (href==0) begin
 				state	= e7;
 				end
 			 	col = col;
